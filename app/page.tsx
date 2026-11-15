@@ -671,7 +671,7 @@ Here's to Mubarak and Farizah, today and always. ❤️`
       </section>
 
 
-      {/* 100 REASONS I LOVE YOU */}
+      {/* 100 REASONS I LOVE FARIZAH */}
       <section
         id="reasons"
         className="py-20 px-6 bg-rose-50 text-[#59463e]"
@@ -682,7 +682,7 @@ Here's to Mubarak and Farizah, today and always. ❤️`
           </p>
 
           <h2 className="text-4xl font-serif mb-4">
-            100 Reasons I Love You ❤️
+            100 Reasons I Love Farizah ❤️
           </h2>
 
           <p className="text-sm mb-10">
