@@ -438,7 +438,7 @@ Here's to Mubarak and Farizah, today and always. ❤️`
       {/* Navigation */}
       <nav className="flex flex-wrap justify-between items-center px-6 md:px-12 py-6 gap-4">
         <h1 className="text-2xl font-serif">
-           Farizah & Mubarak ♡
+           Mubarak & Farizah ♡
         </h1>
 
         <div className="flex flex-wrap gap-5 text-sm">
@@ -465,7 +465,7 @@ Here's to Mubarak and Farizah, today and always. ❤️`
         </p>
 
         <p className="mt-8 text-sm italic">
-           Farizah & Mubarak · Since 06.12.2025
+           Mubarak & Farizah · Since 06.12.2025
         </p>
       </section>
 
@@ -870,7 +870,7 @@ Here's to Mubarak and Farizah, today and always. ❤️`
       {/* Footer */}
       <footer className="text-center py-12 border-t border-[#eadfd5]">
         <p className="font-serif text-2xl">
-           Farizah & Mubarak ♡
+           Mubarak & Farizah ♡
         </p>
 
         <p className="text-xs mt-3">
