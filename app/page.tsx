@@ -5,6 +5,43 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [daysTogether, setDaysTogether] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState("Romantic");
+
+const [currentQuestion, setCurrentQuestion] = useState("");
+
+const [usedQuestions, setUsedQuestions] = useState<string[]>([]);
+const handlePickQuestion = () => {
+  const availableQuestions = questionJar.filter(
+    (item) =>
+      item.category === selectedCategory &&
+      !usedQuestions.includes(item.question)
+  );
+
+  // Start again when every question in this category has been used
+  const questionsToChooseFrom =
+    availableQuestions.length > 0
+      ? availableQuestions
+      : questionJar.filter(
+          (item) => item.category === selectedCategory
+        );
+
+  const randomIndex = Math.floor(
+    Math.random() * questionsToChooseFrom.length
+  );
+
+  const pickedQuestion = questionsToChooseFrom[randomIndex];
+
+  setCurrentQuestion(pickedQuestion.question);
+
+  setUsedQuestions((previous) =>
+    availableQuestions.length > 0
+      ? [...previous, pickedQuestion.question]
+      : [pickedQuestion.question]
+  );
+};
+  const [surpriseMessage, setSurpriseMessage] = useState(
+  "Click the button for a little surprise, my love. ❤️"
+);
 
   const [completedBucketItems, setCompletedBucketItems] = useState<number[]>([]);
 
@@ -430,6 +467,63 @@ Here's to Mubarak and Farizah, today and always. ❤️`
     "Keep choosing each other, every day ♡",
   ];
 
+
+  const surpriseMessages = [
+    "You're my favourite notification. I love you, Farizah. ❤️",
+    "If I could teleport anywhere right now, I'd be right beside you. 🥹",
+    "Today's reminder: you're beautiful, appreciated and deeply loved. ❤️",
+    "I can't wait for our next hug. I'm counting down! 🤗",
+    "You make my world a much happier place. ♡",
+    "Surprise date idea: dinner, a movie and absolutely no rushing. 🍿",
+    "One day, we'll look back at this distance and smile at how far we've come. ❤️",
+    "I would choose you in every lifetime, my love. 🥰",
+    "Your smile is still one of my favourite things in the world.",
+    "Sending you 100 virtual kisses until I can give you real ones. 😘",
+    "Let's plan an adventure together. Somewhere new, just us. ✈️",
+    "May Allah continue to bless our love and our future together. Ameen. 🤲🏽",
+    "You are my favourite person to do absolutely nothing with. ❤️",
+    "I hope something makes you smile today. If not, remember you've got me. ♡",
+    "I love you more than words can explain, my Farizah. ❤️",
+  ];
+
+
+const questionJar = [
+  // Romantic questions
+  { category: "Romantic", question: "What was the first thing you noticed about me?" },
+  { category: "Romantic", question: "When did you realise you were falling for me?" },
+  { category: "Romantic", question: "What's your favourite memory of us?" },
+  { category: "Romantic", question: "What makes you feel most loved by me?" },
+  { category: "Romantic", question: "What's one thing I do that always makes you smile?" },
+  { category: "Romantic", question: "Where would you love us to travel together?" },
+  { category: "Romantic", question: "What's your favourite thing about our relationship?" },
+  { category: "Romantic", question: "What song reminds you of us?" },
+  { category: "Romantic", question: "What are you most looking forward to in our future?" },
+  { category: "Romantic", question: "If you could relive one day with me, which would it be?" },
+
+  // Fun questions
+  { category: "Fun", question: "If we swapped bodies for a day, what would you do first?" },
+  { category: "Fun", question: "Who is more dramatic between us?" },
+  { category: "Fun", question: "What's the funniest thing we've done together?" },
+  { category: "Fun", question: "If we won the lottery tomorrow, what's our first purchase?" },
+  { category: "Fun", question: "Who would survive longer on a deserted island?" },
+  { category: "Fun", question: "What's my funniest habit?" },
+  { category: "Fun", question: "If our relationship were a movie, what would its title be?" },
+  { category: "Fun", question: "Who takes longer to get ready?" },
+  { category: "Fun", question: "What's one silly thing you want us to try together?" },
+  { category: "Fun", question: "If we opened a business together, what would it be?" },
+
+  // Deep questions
+  { category: "Deep", question: "What does a happy marriage look like to you?" },
+  { category: "Deep", question: "What's one dream you really want us to achieve together?" },
+  { category: "Deep", question: "What scares you most about the future?" },
+  { category: "Deep", question: "How can I become a better partner to you?" },
+  { category: "Deep", question: "What does feeling emotionally safe mean to you?" },
+  { category: "Deep", question: "What's something you've always wanted to tell me?" },
+  { category: "Deep", question: "What kind of home do you dream of building together?" },
+  { category: "Deep", question: "How do you think we've changed since we met?" },
+  { category: "Deep", question: "What's one promise you want us always to keep?" },
+  { category: "Deep", question: "Where do you see us in five years?" },
+];
 
 
   return (
@@ -867,6 +961,54 @@ Here's to Mubarak and Farizah, today and always. ❤️`
       </section>
 
 
+      {/* SURPRISE ME */}
+      <section
+        id="surprise"
+        className="py-20 px-6 bg-[#faf6f1] text-[#59463e]"
+      >
+        <div className="max-w-2xl mx-auto text-center">
+
+          <p className="uppercase tracking-widest text-xs mb-3">
+            A little unexpected happiness
+          </p>
+
+          <h2 className="text-4xl font-serif mb-4">
+            A Surprise for You 💝
+          </h2>
+
+          <p className="text-sm mb-10">
+            Whenever you need a little reminder of how special you are.
+          </p>
+
+          <div className="bg-white rounded-2xl shadow-sm p-8 sm:p-12">
+            <div className="text-5xl mb-6">🎁</div>
+
+            <p className="font-serif text-xl leading-9 min-h-24 flex items-center justify-center">
+              {surpriseMessage}
+            </p>
+
+            <button
+              onClick={() => {
+                const randomIndex = Math.floor(
+                  Math.random() * surpriseMessages.length
+                );
+
+                setSurpriseMessage(surpriseMessages[randomIndex]);
+              }}
+              className="mt-8 px-8 py-3 rounded-full bg-[#b47d76] text-white text-sm hover:opacity-90 transition"
+            >
+              Surprise Me ♡
+            </button>
+          </div>
+
+          <p className="text-xs italic mt-6">
+            Made with love, especially for Farizah. ❤️
+          </p>
+
+        </div>
+      </section>
+
+
       {/* Footer */}
       <footer className="text-center py-12 border-t border-[#eadfd5]">
         <p className="font-serif text-2xl">
@@ -877,6 +1019,83 @@ Here's to Mubarak and Farizah, today and always. ❤️`
           Made with love, just for us.
         </p>
       </footer>
+
+
+{/* Our Question Jar */}
+<section
+  id="question-jar"
+  className="max-w-3xl mx-auto px-6 py-20 text-center"
+>
+  <p className="uppercase tracking-widest text-xs mb-4">
+    A little jar full of us
+  </p>
+
+  <h2 className="text-3xl md:text-4xl font-serif mb-4">
+    Our Question Jar 🫙
+  </h2>
+
+  <p className="text-sm md:text-base mb-8 opacity-75">
+    30 little questions to help us laugh, connect and fall in love
+    with each other all over again.
+  </p>
+
+  <div className="flex flex-wrap justify-center gap-3 mb-10">
+    {["Romantic", "Fun", "Deep"].map((category) => (
+      <button
+        key={category}
+        onClick={() => {
+          setSelectedCategory(category);
+          setCurrentQuestion("");
+          setUsedQuestions([]);
+        }}
+        className={`px-5 py-2 rounded-full border transition ${
+          selectedCategory === category
+            ? "bg-rose-400 text-white border-rose-400"
+            : "border-rose-300 hover:bg-rose-100"
+        }`}
+      >
+        {category === "Romantic"
+          ? "💕 Romantic"
+          : category === "Fun"
+          ? "😂 Fun"
+          : "🥹 Deep"}
+      </button>
+    ))}
+  </div>
+
+  <div className="bg-white/80 shadow-lg rounded-2xl p-8 md:p-12 border border-rose-100">
+    <div className="text-5xl mb-6">💌</div>
+
+    <p className="text-xs uppercase tracking-widest mb-4 opacity-60">
+      Your question
+    </p>
+
+    <div className="min-h-24 flex items-center justify-center">
+      <p className="text-xl md:text-2xl font-serif leading-relaxed">
+        {currentQuestion ||
+          "Pick a category and let's discover something new about each other."}
+      </p>
+    </div>
+
+    <button
+      onClick={handlePickQuestion}
+      className="mt-8 bg-rose-400 hover:bg-rose-500 text-white px-8 py-3 rounded-full transition shadow-md"
+    >
+      Pick a Question ❤️
+    </button>
+
+    <p className="text-xs mt-5 opacity-60">
+      {usedQuestions.filter((question) =>
+        questionJar.some(
+          (item) =>
+            item.category === selectedCategory &&
+            item.question === question
+        )
+      ).length} of 10 questions explored
+    </p>
+  </div>
+</section>
+
 
     </main>
   );
