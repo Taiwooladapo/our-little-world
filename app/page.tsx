@@ -1008,19 +1008,6 @@ const questionJar = [
         </div>
       </section>
 
-
-      {/* Footer */}
-      <footer className="text-center py-12 border-t border-[#eadfd5]">
-        <p className="font-serif text-2xl">
-           Mubarak & Farizah ♡
-        </p>
-
-        <p className="text-xs mt-3">
-          Made with love, just for us.
-        </p>
-      </footer>
-
-
 {/* Our Question Jar */}
 <section
   id="question-jar"
@@ -1095,6 +1082,17 @@ const questionJar = [
     </p>
   </div>
 </section>
+
+      {/* Footer */}
+      <footer className="text-center py-12 border-t border-[#eadfd5]">
+        <p className="font-serif text-2xl">
+           Mubarak & Farizah ♡
+        </p>
+
+        <p className="text-xs mt-3">
+          Made with love, just for us.
+        </p>
+      </footer>
 
 
     </main>
