@@ -550,7 +550,7 @@ const questionJar = [
         </p>
 
         <h2 className="text-5xl md:text-7xl font-serif mb-8">
-          Our Little World
+          The M & F Love Story ❤️
         </h2>
 
         <p className="text-lg max-w-xl mx-auto leading-8">
